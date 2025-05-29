@@ -14,5 +14,9 @@ func Start() {
 	router.HTTPSetup()
 
 	log.Print("server started on localhost:8000")
-	http.ListenAndServe(fmt.Sprintf(":%v", config.Cfg.Server.Port), nil)
+	err := http.ListenAndServe(fmt.Sprintf(":%v", config.Cfg.Server.Port), nil)
+
+	if err != nil {
+		log.Fatalf("Server starting error: %v", err)
+	}
 }
