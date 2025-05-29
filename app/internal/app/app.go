@@ -10,7 +10,7 @@ import (
 )
 
 func Start() {
-	config.LoadConfig()
+	config.LoadConfig("config.yaml")
 	router.HTTPSetup()
 
 	log.Print("server started on localhost:8000")

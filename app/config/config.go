@@ -16,8 +16,8 @@ type Config struct {
 
 var Cfg *Config
 
-func LoadConfig() {
-	file, err := os.Open("config.yaml")
+func LoadConfig(path_to_config string) {
+	file, err := os.Open(path_to_config)
 
 	if err != nil {
 		log.Fatalf("Error while opening file: %v", err)

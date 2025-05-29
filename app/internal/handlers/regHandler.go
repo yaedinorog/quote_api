@@ -83,6 +83,13 @@ func GetRandomQuote(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "GET" {
 		w.WriteHeader(http.StatusMethodNotAllowed)
 	}
+
+	if len(quotes.List) == 0 {
+		w.WriteHeader(http.StatusBadRequest)
+		res_json, _ := json.Marshal("Sorry there is no quotes in our service")
+		w.Write(res_json)
+		return
+	}
 	res_json, err := json.Marshal(quotes.List[(rand.Int() % len(quotes.List))])
 
 	if err != nil {
